@@ -1,0 +1,43 @@
+.homeWrap{
+  position: relative;
+  .start-button {
+    position: absolute;
+    border: 1px solid cornflowerblue;
+    transform: translate(-50%,-50%);
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    top:50%;
+    left: 50%;
+    color: coral;
+    background-color: #fff;
+    padding: 10px 20px;
+    font-size: 1.5em;
+    margin-bottom: 20px; /* Add margin to separate start button from sections */
+  }
+
+  #Home {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    .section {
+      border: 1px solid #000; /* Initially no border */
+      display: flex;
+      margin: 10px;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5em;
+      width: calc(49% - 20px);
+      height: calc(50% - 20px);
+      cursor: pointer; /* Add cursor pointer */
+      transition: border-color 0.3s; /* Add transition for smooth effect */
+    }
+
+    .section.selected {
+      border-color: cornflowerblue; /* Show border when section is selected */
+    }
+  }
+}
