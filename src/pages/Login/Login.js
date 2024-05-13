@@ -7,23 +7,24 @@ function Login(props) {
   // 렌더링 결과를 반환합니다.
   return (
     <>
-      <div className="gameboyWrap">
-        <div className="screenWrap">
-          <div className="form">
-            <h2>로그인</h2>
-            <p><input className="login" type="text" name="username" placeholder="아이디" onChange={event => {
-              setId(event.target.value);
-            }} /></p>
-            <p><input className="login" type="password" name="pwd" placeholder="비밀번호" onChange={event => {
-              setPassword(event.target.value);
-            }} /></p>
-
-            <p>계정이 없으신가요? </p>
-          </div>
+      <div className="loginWrap">
+        <div className="backgroundWrap">
         </div>
-        <div className="controlWrap">
-          <div className="buttonGroup">
-            <p><input className="btn" type="submit" value="로그인" onClick={() => {
+        <div className="gameboyWrap">
+          <div className="screenWrap">
+            <div className="form">
+              <h2>로그인</h2>
+              <p><input className="login" type="text" name="username" placeholder="아이디" onChange={event => {
+                setId(event.target.value);
+              }} /></p>
+              <p><input className="login" type="password" name="pwd" placeholder="비밀번호" onChange={event => {
+                setPassword(event.target.value);
+              }} /></p>
+              <p>계정이 없으신가요? </p>
+            </div>
+          </div>
+          <div className="controlWrap">
+            <button className="btn login" type="submit" value="로그인" onClick={() => {
               const userData = {
                 userId: id,
                 userPassword: password,
@@ -46,13 +47,13 @@ function Login(props) {
                     alert(json.isLogin)
                   }
                 });
-            }} /></p>
-            <button onClick={() => {
+            }}>로그인</button>
+            <button className="btn signin" onClick={() => {
               props.setMode("SIGNIN");
             }}>회원가입</button>
           </div>
         </div>
-      </div>
+      </div>    
     </>
   );
 }

@@ -1,5 +1,13 @@
-.homeWrap{
-  position: relative;
+
+.homeWrap {
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  background: #f9f9f9;
+  border-radius: 8px;
+  text-align: center;
   .start-button {
     position: absolute;
     border: 1px solid cornflowerblue;
@@ -9,7 +17,6 @@
     border-radius: 50%;
     top:50%;
     left: 50%;
-    color: coral;
     background-color: #fff;
     padding: 10px 20px;
     font-size: 1.5em;
@@ -21,23 +28,138 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 84vh;
 
     .section {
-      border: 1px solid #000; /* Initially no border */
+      border: 3px solid rgb(192, 192, 192);
+      border-radius: 30px;
       display: flex;
       margin: 10px;
       justify-content: center;
       align-items: center;
-      font-size: 1.5em;
+      font-size: 30px;
       width: calc(49% - 20px);
       height: calc(50% - 20px);
+      border: 0;
+      box-sizing: border-box;
       cursor: pointer; /* Add cursor pointer */
+      //box-shadow: 5px 5px 10px 20px rgba(0, 0, 0, 0.3);
       transition: border-color 0.3s; /* Add transition for smooth effect */
+      &1{
+        color: #e72929;
+        transition: all .3s;
+        background-color:#fff;
+        &:hover{
+          color: #fff;
+          background-color: #E72929;
+          border-right: 10px solid #8d1818;
+          border-bottom: 10px solid #8d1818;
+          box-shadow: 0px 0px 30px -20px rgba(0, 0, 0, 0.3);
+        }
+        // background: url('../../../../public/imgs/bgLayerRed.svg') no-repeat center;
+        // background-size: cover;
+      }
+      &2{
+        transition: all .3s;
+        background-color:#99E550;
+        &:hover{
+          border-right: 10px solid #4d7528;
+          border-bottom: 10px solid #4d7528;
+          box-shadow: 0px 0px 30px -20px rgba(0, 0, 0, 0.3);
+        }
+        // background: url('../../../../public/imgs/bgLayerGreen.svg') no-repeat center;
+        // background-size: cover;
+      }
+      &3{
+        transition: all .3s;
+        background-color:#FBF236;
+        &:hover{
+          border-right: 10px solid #a09a21;
+          border-bottom: 10px solid #a09a21;
+          box-shadow: 10px 10px 30px -20px rgba(0, 0, 0, 0.3);
+        }
+        //background: url('../../../../public/imgs/bgLayerGold.svg') no-repeat center;
+        //background-size: cover;
+      }
+      &4{
+        transition: all .3s;
+        background-color:#9CAFAA;
+        &:hover{
+          border-right: 10px solid #4d567a;
+          border-bottom: 10px solid #4d567a;
+          box-shadow: 10px 10px 30px -20px rgba(0, 0, 0, 0.3);
+        }
+        // background: url('../../../../public/imgs/bgLayerSliver.svg') no-repeat center;
+        // background-size: cover;
+      }
     }
 
     .section.selected {
-      border-color: cornflowerblue; /* Show border when section is selected */
+      position:relative;
+      &:before{
+        content:'';
+        position:absolute;
+        width: 100%;
+        height: 100%;
+        border:1px solid #000;
+
+      }
     }
+  }
+}
+
+h2 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+p {
+  color: #666;
+  margin-bottom: 15px;
+}
+
+a {
+  color: #06c;
+  text-decoration: none;
+  padding: 8px 16px;
+  border: 1px solid #06c;
+  border-radius: 4px;
+  display: inline-block;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+a:hover {
+  background-color: #06c;
+  color: white;
+}
+
+.section {
+  cursor: pointer;
+  padding: 20px;
+  margin-top: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.section:hover {
+  background-color: #efefef;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Additional styling for specific sections if needed */
+.section1 { color: #0056b3; }
+.section2 { color: #0082c8; }
+.section3 { color: #00aaff; }
+.section4 { color: #00c2f0; }
+
+/* Responsive design elements */
+@media (max-width: 600px) {
+  .homeWrap {
+    padding: 10px;
+  }
+
+  .section {
+    padding: 15px;
   }
 }

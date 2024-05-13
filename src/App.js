@@ -41,11 +41,6 @@ function App() {
   else if (mode === 'WELCOME') {
     content = <>
     <div className="App">      
-      <nav>
-        <Link to="/">Home</Link> |  
-        <Link to="/quiz">About</Link> | 
-        <button onClick={()=>{console.log(1)}}>문제불러오기</button>
-      </nav>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/quiz1" element={<Quiz1/>} />
@@ -60,9 +55,7 @@ function App() {
   // 애플리케이션을 렌더링합니다.
   return (
     <>
-      <div className="loginWrap">
-          {content}
-      </div>
+      {content}
     </>
   );
 }
