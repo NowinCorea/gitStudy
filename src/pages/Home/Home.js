@@ -42,7 +42,7 @@ function Home() {
 
     return () => {
     };
-  }, []); 
+  },[fetchQuizData]); 
 
   const handleSectionClick = async (sectionNumber) => {
     await fetchQuizData(sectionNumber);
@@ -56,7 +56,6 @@ function Home() {
       <p>로그인에 성공하셨습니다.</p>
       <a href="/logout">로그아웃</a>
       <div id="Home">
-        {isLoading && <p>Loading...</p>} {/* Display loading indicator */}
         {quizData && (
           <div>
             {/* Use quizData here for quiz content */}

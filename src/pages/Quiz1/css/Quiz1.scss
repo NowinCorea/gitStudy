@@ -44,21 +44,30 @@
       }
     }
   }
-  .button{
-    margin: 10px 5px;
-    padding: 8px 0;
-    border-radius: 8px;
-    text-align: center;
-    display: inline-block;
-    background-color: cornflowerblue;
-    color: #fff;
-    transition: all .3s;
-    cursor: pointer;
-    width: 160px;
-    height: 20px;
-    &:hover{
-      background-color: #fff;
+  .view-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    .button{
+      margin: 10px 5px;
+      padding: 8px 0;
+      border-radius: 8px;
+      text-align: center;
+      display: inline-block;
       color: cornflowerblue;
+      background-color: #fff;
+      transition: all .3s;
+      cursor: pointer;
+      width: 160px;
+      height: 20px;
+      &:hover{
+        color: #fff;
+        background-color: cornflowerblue;
+      }
+    }
+    .resultBtn{
+      background-color: coral;
     }
   }
 }

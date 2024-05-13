@@ -41,20 +41,29 @@
   line-height: 40px;
   border-bottom: 2px solid;
 }
-.quiz .button {
+.quiz .view-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+.quiz .view-buttons .button {
   margin: 10px 5px;
   padding: 8px 0;
   border-radius: 8px;
   text-align: center;
   display: inline-block;
-  background-color: cornflowerblue;
-  color: #fff;
+  color: cornflowerblue;
+  background-color: #fff;
   transition: all 0.3s;
   cursor: pointer;
   width: 160px;
   height: 20px;
 }
-.quiz .button:hover {
-  background-color: #fff;
-  color: cornflowerblue;
+.quiz .view-buttons .button:hover {
+  color: #fff;
+  background-color: cornflowerblue;
+}
+.quiz .view-buttons .resultBtn {
+  background-color: coral;
 }/*# sourceMappingURL=Quiz1.css.map */

@@ -11,6 +11,8 @@ function Quiz1() {
   const [showResults, setShowResults] = useState(false);
   const [randomQuiz, setRandomQuiz] = useState([]);
   const [correctGroup,setCorrectGroup] = useState([]);
+  const [viewCount, setViewCount] = useState(1);  
+
 
   //퀴즈카드색상 정하기
   const [colorGroup,setColorGroup] = useState();
@@ -96,30 +98,31 @@ function Quiz1() {
       <div className="button" onClick={displayStartOver} id="start">처음부터 다시 시작</div>
     </div>
   )};
+  const createQuestionElements = () => {
+  const endIndex = Math.min(questionCounter + viewCount, randomQuiz.length);
+  const visibleQuestions = randomQuiz.slice(questionCounter, endIndex);
 
-const createQuestionElements = () => {
-  return randomQuiz.map((question, index) => {
-    const { id, question: questionText, choice1, choice2, choice3, choice4, correct_choice} = question;
-    const { newColor } = colorGroup[index]; // 해당 인덱스의 색상 가져오기
+  return visibleQuestions.map((question, index) => {
+    const { id, question: questionText, choice1, choice2, choice3, choice4 } = question;
+    const { newColor } = colorGroup[questionCounter + index]; // Adjust index based on visible questions
 
     return (
       <div className="quizWrap" key={id}>
-        <h2 className="quizWrap_title">QUESTION<span style={{color: newColor }}>{id}</span></h2>
+        <h2 className="quizWrap_title">QUESTION <span style={{ color: newColor }}>{id}</span></h2>
         <div className="quizWrap_quizText">
           <p>{questionText}</p>
         </div>
         <form>
           <ul className="quizWrap_list">
-            {/* <p>{correct_choice}</p> */}
             {[choice1, choice2, choice3, choice4].map((choice, choiceIndex) => (
-              <li key={choiceIndex} style={{borderColor: newColor}}>
+              <li key={choiceIndex} style={{ borderColor: newColor }}>
                 <input
                   type="radio"
                   id={`choice${choiceIndex + 1}-${id}`}
                   name={`question-${id}`}
                   value={choiceIndex}
-                  onChange={(e) => choose(e, index)}
-                  checked={selections[index] === choiceIndex}
+                  onChange={(e) => choose(e, questionCounter + index)}
+                  checked={selections[questionCounter + index] === choiceIndex}
                 />
                 <label htmlFor={`choice${choiceIndex + 1}-${id}`}>{choice}</label>
               </li>
@@ -129,7 +132,12 @@ const createQuestionElements = () => {
       </div>
     );
   });
-};
+  };
+
+  const handleViewChange = (count) => {
+    setViewCount(count);
+    setQuestionCounter(0);
+  };
 
   const handleSubmitQuiz = () => {
     if (selections.some(selection => selection === null)) {
@@ -151,12 +159,14 @@ const createQuestionElements = () => {
       </div>
       {!showResults && (
         <>
-          <div className="button" onClick={displayPrev} id="prev" style={{ display: questionCounter === 0 ? "none" : "inline-block" }}>이전</div>
-          <div className="button" onClick={displayNext} id="next">다음</div>
-          <div className="button">1개 보기</div>
-          <div className="button">5개 보기</div>
-          <div className="button">10개 보기</div>
-          {isSubmitButtonVisible && <button onClick={handleSubmitQuiz}>결과 보기</button>}
+          <div className="view-buttons">
+            <div className="button" onClick={displayPrev} id="prev" style={{ display: questionCounter === 0 ? "none" : "inline-block" }}>이전</div>
+            <div className="button" onClick={displayNext} id="next">다음</div>
+            <div className="button" onClick={() => handleViewChange(1)}>1개 보기</div>
+            <div className="button" onClick={() => handleViewChange(5)}>5개 보기</div>
+            <div className="button" onClick={() => handleViewChange(10)}>10개 보기</div>
+          {isSubmitButtonVisible && <div className="button resultBtn" onClick={handleSubmitQuiz}>결과 보기</div>}
+          </div>
         </>
       )}
     </div>
